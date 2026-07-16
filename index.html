@@ -2592,6 +2592,371 @@ body {
   }
 }
 
+/* Detail-level evidence: every conclusion, method and warning returns to its own PDF anchor. */
+.detail-body {
+  grid-template-columns: minmax(0, 1.42fr) minmax(280px, 0.58fr);
+}
+
+.detail-kicker,
+.detail-essence,
+.evidence-item,
+.evidence-note,
+.evidence-visual {
+  appearance: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.detail-kicker {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  margin: 4px 0 0;
+  padding: 0;
+  color: var(--doc-accent, var(--red));
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.detail-kicker .evidence-affordance {
+  opacity: 0.72;
+}
+
+.detail-essence {
+  position: relative;
+  grid-template-columns: 112px minmax(0, 1fr) auto;
+  align-items: start;
+  width: 100%;
+  color: inherit;
+  border: 1px solid transparent;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.detail-essence:hover {
+  border-color: #ffc2cc;
+  box-shadow: 0 12px 28px rgba(255, 36, 66, 0.09);
+  transform: translateY(-2px);
+}
+
+.evidence-affordance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.evidence-affordance b,
+.evidence-affordance i {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 760;
+  line-height: 1;
+}
+
+.evidence-affordance b {
+  color: var(--red);
+  background: #fff0f3;
+}
+
+.evidence-affordance i {
+  color: #777;
+  background: #f3f3f2;
+}
+
+.analysis-block {
+  margin: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.analysis-block:first-child {
+  padding-top: 0;
+}
+
+.analysis-block h4 {
+  margin-bottom: 16px;
+  font-size: 21px;
+}
+
+.analysis-block ul.evidence-list {
+  gap: 12px;
+}
+
+.analysis-block .evidence-list li {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.analysis-block .evidence-list li::before {
+  display: none;
+}
+
+.evidence-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 114px;
+  padding: 18px 16px 14px 37px;
+  color: #252525;
+  border: 1px solid #e6e6e4;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 7px 18px rgba(32, 32, 32, 0.035);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.evidence-item::before {
+  position: absolute;
+  top: 23px;
+  left: 17px;
+  width: 8px;
+  height: 8px;
+  content: "";
+  border-radius: 50%;
+  background: #58c8b8;
+  box-shadow: 0 0 0 5px #eaf9f5;
+}
+
+.red-flags .evidence-item::before {
+  background: var(--red);
+  box-shadow: 0 0 0 5px #fff0f3;
+}
+
+.evidence-item:hover,
+.evidence-visual:hover {
+  border-color: #ff9cab;
+  box-shadow: 0 13px 28px rgba(255, 36, 66, 0.1);
+  transform: translateY(-3px);
+}
+
+.evidence-item-copy {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.evidence-item .evidence-affordance {
+  justify-content: space-between;
+}
+
+.evidence-item .evidence-affordance i {
+  opacity: 0.72;
+  transition: opacity 160ms ease;
+}
+
+.evidence-item:hover .evidence-affordance i,
+.evidence-item:focus-visible .evidence-affordance i {
+  opacity: 1;
+}
+
+.formula-card,
+.memory-card {
+  margin: 18px 0 0;
+}
+
+.evidence-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  margin-top: 7px;
+  padding: 0;
+  color: inherit;
+  border: 0;
+  background: transparent;
+}
+
+.evidence-note p {
+  margin: 0;
+}
+
+.evidence-note:hover p {
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 36, 66, 0.3);
+  text-underline-offset: 5px;
+}
+
+.detail-visuals {
+  margin-top: 30px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.detail-visuals-heading {
+  display: flex;
+  gap: 20px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.detail-visuals-heading span {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.detail-visuals-heading h4 {
+  margin: 4px 0 0;
+  font-size: 22px;
+}
+
+.detail-visuals-heading p {
+  margin: 0;
+  color: #888;
+  font-size: 11px;
+}
+
+.visual-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.evidence-visual {
+  overflow: hidden;
+  padding: 0;
+  color: inherit;
+  border: 1px solid #e8e8e6;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(32, 32, 32, 0.05);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.evidence-visual-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #efeeeb;
+}
+
+.evidence-visual-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 240ms ease;
+}
+
+.evidence-visual:hover img {
+  transform: scale(1.035);
+}
+
+.evidence-visual-image b {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 6px 9px;
+  color: #fff;
+  border-radius: 999px;
+  background: var(--red);
+  box-shadow: 0 5px 14px rgba(255, 36, 66, 0.25);
+  font-size: 10px;
+}
+
+.evidence-visual-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 13px 14px 15px;
+}
+
+.evidence-visual-copy strong {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.evidence-visual-copy small {
+  overflow: hidden;
+  color: #8a8a8a;
+  font-size: 10px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evidence-trigger:focus-visible {
+  outline: 3px solid rgba(255, 36, 66, 0.24);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1180px) {
+  .visual-evidence-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-evidence-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-essence {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-kicker {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .evidence-item {
+    min-height: 102px;
+  }
+
+  .visual-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evidence-visual-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .detail-visuals-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .evidence-note {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
   </head>
   <body>
@@ -2685,7 +3050,7 @@ body {
             <p class="eyebrow">知识笔记</p>
             <h2>点开一个知识点，读到它的根据。</h2>
           </div>
-          <p>点击节点读分析；再点击“定位 PDF 原文”，直接高亮对应行。</p>
+          <p>节点里的结论、抓手与红旗都可点击；每个细节都能直接高亮对应原文。</p>
         </div>
 
         <div class="document-switch" id="documentSwitch" role="tablist" aria-label="选择材料"></div>
@@ -3575,9 +3940,132 @@ body {
     );
 
   const normalize = (value = "") => String(value).replace(/\s+/g, "").toLowerCase();
+  const itemText = (item) => (typeof item === "string" ? item : item?.text || "");
   const padPage = (page) => String(page).padStart(3, "0");
   const resolveAssetPath = (path) => window.INLINE_IMAGE_DATA?.[path] || path;
   const pageImagePath = (doc, page) => resolveAssetPath(`assets/reader/${doc.readerKey}/page-${padPage(page)}.jpg`);
+
+  const detailEvidence = new Map();
+  const detailEvidenceRefs = new Map();
+
+  const evidenceOverrides = {
+    "city-framework:how:0": { page: 46, anchor: "城投债的分析框架主要由三方面构成" },
+    "city-framework:how:1": { page: 47, anchor: "政府对城投公司的定位和安排显得尤其重要" },
+    "city-framework:how:2": { page: 61, anchor: "资产质量、债务安排，也能在很大" },
+    "city-framework:how:3": { page: 72, anchor: "再通过现场调研去搞清楚" },
+    "city-framework:redFlags:0": { page: 47, anchor: "只要按照地域购买即可" },
+    "city-framework:redFlags:1": { page: 46, anchor: "通用的风险分析、财务分析仅仅是城投债投资的一部分" },
+    "city-framework:redFlags:3": { page: 84, anchor: "仅仅把量化工具作为衡量信用风险的唯一工具" },
+  };
+
+  function evidenceKey(record, kind, index = 0) {
+    return `${record.id}:${kind}:${index}`;
+  }
+
+  function pageLine(doc, pageNumber, anchor = "") {
+    const page = pdfData[doc.readerKey]?.pages.find((item) => item.page === pageNumber);
+    if (!page) return null;
+    const needle = normalize(anchor);
+    const line = page.lines.find((item) => !needle || normalize(item).includes(needle));
+    return line ? { page: pageNumber, anchor: anchor || line, line } : null;
+  }
+
+  function semanticUnits(value) {
+    const compact = normalize(value).replace(/[^\u3400-\u9fff0-9a-z]+/g, "");
+    const units = new Set();
+    for (let size = 2; size <= 4; size += 1) {
+      for (let index = 0; index <= compact.length - size; index += 1) {
+        units.add(compact.slice(index, index + size));
+      }
+    }
+    return units;
+  }
+
+  function inferEvidenceSource(record, value, label, kind, index) {
+    const text = itemText(value);
+    const supplied = typeof value === "object" ? value.source : null;
+    const override = supplied || evidenceOverrides[evidenceKey(record, kind, index)];
+    if (override) {
+      const matched = pageLine(record.doc, override.page, override.anchor);
+      if (matched) {
+        return { page: matched.page, anchor: override.anchor, note: `${label} · 原文对应段落` };
+      }
+    }
+
+    const units = semanticUnits(text);
+    let best = null;
+    const sourcePage = record.source.page;
+    pdfData[record.doc.readerKey].pages.forEach((page) => {
+      page.lines.forEach((line) => {
+        const lineNormalized = normalize(line);
+        if (lineNormalized.length < 7) return;
+        let score = 0;
+        units.forEach((unit) => {
+          if (lineNormalized.includes(unit)) score += unit.length === 4 ? 5 : unit.length === 3 ? 3 : 1;
+        });
+        const distance = Math.abs(page.page - sourcePage);
+        score -= Math.min(distance, 18) * 0.18;
+        if (!best || score > best.score) best = { page: page.page, line, score };
+      });
+    });
+
+    const minimumScore = Math.max(3, Math.min(11, units.size * 0.075));
+    const chosen = best && best.score >= minimumScore ? best : pageLine(record.doc, record.source.page, record.source.anchor);
+    if (!chosen) return { ...record.source, note: `${label} · ${record.source.note || "节点原文"}` };
+    return {
+      page: chosen.page,
+      anchor: chosen.line || chosen.anchor,
+      note: `${label} · 原文对应段落`,
+    };
+  }
+
+  function indexDetailEvidence() {
+    const auditItems = [];
+    records.forEach((record) => {
+      const fields = [
+        ["kicker", "核心提示", record.kicker ? [record.kicker] : []],
+        ["essence", "一句话结论", record.essence ? [record.essence] : []],
+        ["how", "分析抓手", record.how || []],
+        ["redFlags", "红旗信号", record.redFlags || []],
+        ["formulas", "判断式", record.formulas || []],
+        ["memory", "记忆钩子", record.memory ? [record.memory] : []],
+      ];
+
+      fields.forEach(([kind, label, items]) => {
+        items.forEach((item, index) => {
+          const key = evidenceKey(record, kind, index);
+          const source = inferEvidenceSource(record, item, label, kind, index);
+          detailEvidence.set(key, source);
+          const matched = pageLine(record.doc, source.page, source.anchor);
+          auditItems.push({ key, recordId: record.id, kind, text: itemText(item), source, valid: Boolean(matched) });
+        });
+      });
+    });
+
+    window.__DETAIL_EVIDENCE_AUDIT__ = {
+      total: auditItems.length,
+      missing: auditItems.filter((item) => !item.valid).map((item) => item.key),
+      items: auditItems,
+    };
+  }
+
+  indexDetailEvidence();
+
+  function registerEvidence(record, kind, index, value, sourceOverride = null) {
+    const ref = `${record.id}-${kind}-${index}`;
+    const source = sourceOverride || detailEvidence.get(evidenceKey(record, kind, index)) || record.source;
+    detailEvidenceRefs.set(ref, {
+      id: "",
+      title: itemText(value) || record.title,
+      doc: record.doc,
+      source,
+    });
+    return { ref, source };
+  }
+
+  function evidenceAffordance(source, label = "看原文") {
+    return `<span class="evidence-affordance"><b>PDF p.${source.page}</b><i>${escapeHTML(label)} ↗</i></span>`;
+  }
 
   function countLabel(count) {
     return `${count} 个知识点`;
@@ -3597,9 +4085,9 @@ body {
       record.kicker,
       record.essence,
       record.memory,
-      ...(record.how || []),
-      ...(record.redFlags || []),
-      ...(record.formulas || []),
+      ...(record.how || []).map(itemText),
+      ...(record.redFlags || []).map(itemText),
+      ...(record.formulas || []).map(itemText),
     ]
       .filter(Boolean)
       .join(" ");
@@ -3712,12 +4200,70 @@ body {
     els.nodeCount.textContent = countLabel(flatByDoc.get(doc.id).length);
   }
 
-  function renderListBlock(title, items, className = "") {
+  function renderListBlock(title, items, className, record, kind) {
     if (!items?.length) return "";
     return `
       <section class="analysis-block ${className}">
         <h4>${escapeHTML(title)}</h4>
-        <ul>${items.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul>
+        <ul class="evidence-list">${items
+          .map((item, index) => {
+            const evidence = registerEvidence(record, kind, index, item);
+            return `<li><button class="evidence-item evidence-trigger" type="button" data-evidence-ref="${evidence.ref}">
+              <span class="evidence-item-copy">${escapeHTML(itemText(item))}</span>
+              ${evidenceAffordance(evidence.source)}
+            </button></li>`;
+          })
+          .join("")}</ul>
+      </section>`;
+  }
+
+  function collectVisualEvidence(record) {
+    const related = [];
+    const seenPages = new Set();
+    const add = (candidate) => {
+      if (!candidate || seenPages.has(candidate.source.page) || related.length >= 3) return;
+      seenPages.add(candidate.source.page);
+      related.push(candidate);
+    };
+
+    add(record);
+    (record.children || []).forEach((child) => add(records.get(child.id)));
+    [...record.parents].reverse().forEach((id) => add(records.get(id)));
+    const siblings = flatByDoc
+      .get(record.doc.id)
+      .filter((candidate) => candidate.depth === record.depth && candidate.id !== record.id)
+      .sort((a, b) => Math.abs(a.source.page - record.source.page) - Math.abs(b.source.page - record.source.page));
+    siblings.forEach(add);
+    flatByDoc.get(record.doc.id).forEach(add);
+    return related;
+  }
+
+  function renderVisualEvidence(record) {
+    const visuals = collectVisualEvidence(record);
+    return `
+      <section class="detail-visuals" aria-label="相关PDF原页">
+        <div class="detail-visuals-heading">
+          <div><span>图文对照</span><h4>相关原页</h4></div>
+          <p>点击图片打开原页与文字锚点</p>
+        </div>
+        <div class="visual-evidence-grid">
+          ${visuals
+            .map((visual, index) => {
+              const evidence = registerEvidence(visual, "visual", index, visual.title, visual.source);
+              return `<button class="evidence-visual evidence-trigger" type="button" data-evidence-ref="${evidence.ref}">
+                <span class="evidence-visual-image">
+                  <img src="${pageImagePath(visual.doc, visual.source.page)}" alt="${escapeHTML(visual.title)}原书第${
+                    visual.source.page
+                  }页" loading="eager" />
+                  <b>PDF p.${visual.source.page}</b>
+                </span>
+                <span class="evidence-visual-copy"><strong>${escapeHTML(
+                  visual.title.replace(/^\d+｜/, ""),
+                )}</strong><small>${escapeHTML(visual.source.note || "点击查看对应原文")}</small></span>
+              </button>`;
+            })
+            .join("")}
+        </div>
       </section>`;
   }
 
@@ -3726,13 +4272,26 @@ body {
     const record = records.get(state.selected.get(state.activeDoc));
     if (!record) return;
 
+    detailEvidenceRefs.clear();
+
+    const kickerEvidence = record.kicker ? registerEvidence(record, "kicker", 0, record.kicker) : null;
+    const essenceEvidence = registerEvidence(record, "essence", 0, record.essence);
+
     const formula = record.formulas?.length
-      ? `<div class="formula-card"><span>判断式</span>${record.formulas
-          .map((item) => `<p>${escapeHTML(item)}</p>`)
-          .join("")}</div>`
+      ? `<section class="formula-card"><span>判断式</span>${record.formulas
+          .map((item, index) => {
+            const evidence = registerEvidence(record, "formulas", index, item);
+            return `<button class="evidence-note evidence-trigger" type="button" data-evidence-ref="${evidence.ref}"><p>${escapeHTML(
+              itemText(item),
+            )}</p>${evidenceAffordance(evidence.source)}</button>`;
+          })
+          .join("")}</section>`
       : "";
-    const memory = record.memory
-      ? `<div class="memory-card"><span>记忆钩子</span><p>${escapeHTML(record.memory)}</p></div>`
+    const memoryEvidence = record.memory ? registerEvidence(record, "memory", 0, record.memory) : null;
+    const memory = memoryEvidence
+      ? `<section class="memory-card"><span>记忆钩子</span><button class="evidence-note evidence-trigger" type="button" data-evidence-ref="${
+          memoryEvidence.ref
+        }"><p>${escapeHTML(record.memory)}</p>${evidenceAffordance(memoryEvidence.source)}</button></section>`
       : "";
 
     els.detail.innerHTML = `
@@ -3742,18 +4301,26 @@ body {
           <span>${escapeHTML(breadcrumb(record))}</span>
         </div>
         <h3>${escapeHTML(record.title)}</h3>
-        ${record.kicker ? `<p class="detail-kicker">${escapeHTML(record.kicker)}</p>` : ""}
-        <div class="detail-essence">
+        ${
+          kickerEvidence
+            ? `<button class="detail-kicker evidence-trigger" type="button" data-evidence-ref="${kickerEvidence.ref}"><span>${escapeHTML(
+                record.kicker,
+              )}</span>${evidenceAffordance(kickerEvidence.source, "原文")}</button>`
+            : ""
+        }
+        <button class="detail-essence evidence-trigger" type="button" data-evidence-ref="${essenceEvidence.ref}">
           <span>一句话结论</span>
           <p>${escapeHTML(record.essence)}</p>
-        </div>
+          ${evidenceAffordance(essenceEvidence.source)}
+        </button>
       </div>
       <div class="detail-body">
         <div class="detail-analysis">
-          ${renderListBlock("怎么分析", record.how)}
-          ${renderListBlock("红旗信号", record.redFlags, "red-flags")}
+          ${renderListBlock("怎么分析", record.how, "", record, "how")}
+          ${renderListBlock("红旗信号", record.redFlags, "red-flags", record, "redFlags")}
           ${formula}
           ${memory}
+          ${renderVisualEvidence(record)}
         </div>
         <aside class="detail-source">
           <div class="source-card">
@@ -3983,6 +4550,12 @@ body {
   });
 
   els.detail.addEventListener("click", (event) => {
+    const evidence = event.target.closest("[data-evidence-ref]");
+    if (evidence) {
+      const evidenceRecord = detailEvidenceRefs.get(evidence.dataset.evidenceRef);
+      if (evidenceRecord) openSource(evidenceRecord, { updateHash: false });
+      return;
+    }
     if (!event.target.closest("[data-open-source]")) return;
     const record = records.get(state.selected.get(state.activeDoc));
     openSource(record);
